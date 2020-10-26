@@ -21,7 +21,7 @@ class MovieRepository {
             "page" : 1
         };
         try {
-            Response response = await _dio.get(getMovieUrl, queryParameters: params);
+            Response response = await _dio.get(getPopularUrl, queryParameters: params);
             return MovieResponse.fromJson(response.data);
         }catch(error, stacktrace) {
             print("Exception occured: $error stackTrace: $stacktrace");
@@ -36,7 +36,7 @@ class MovieRepository {
             "page" : 1
         };
         try {
-            Response response = await _dio.get(getMovieUrl, queryParameters: params);
+            Response response = await _dio.get(getPlayingUrl, queryParameters: params);
             return MovieResponse.fromJson(response.data);
         }catch(error, stacktrace) {
             print("Exception occured: $error stackTrace: $stacktrace");
@@ -51,7 +51,7 @@ class MovieRepository {
             "page" : 1
         };
         try {
-            Response response = await _dio.get(getMovieUrl, queryParameters: params);
+            Response response = await _dio.get(getGenresUrl, queryParameters: params);
             return GenreResponse.fromJson(response.data);
         }catch(error, stacktrace) {
             print("Exception occured: $error stackTrace: $stacktrace");
@@ -72,7 +72,7 @@ class MovieRepository {
         }
     }
 
-    Future<GenreResponse> getMovieByGenre(int id) async {
+    Future<MovieResponse> getMovieByGenre(int id) async {
         var params= {
             "api_key" : apiKey,
             "language" : "en-US",
@@ -80,11 +80,11 @@ class MovieRepository {
             "with_genres" : id
         };
         try {
-            Response response = await _dio.get(getPersonsUrl, queryParameters: params);
-            return GenreResponse.fromJson(response.data);
+            Response response = await _dio.get(getMovieUrl, queryParameters: params);
+            return MovieResponse.fromJson(response.data);
         }catch(error, stacktrace) {
             print("Exception occured: $error stackTrace: $stacktrace");
-            return GenreResponse.withError("$error");
+            return MovieResponse.withError("$error");
         }
     }
 }
