@@ -5,7 +5,7 @@ import 'package:movie_app/model/person_response.dart';
 
 class MovieRepository {
     final String apiKey = "44accb5aeb17aac8c9c8f0d576a76b9d";
-    static String mainUrl = "https://api.themovedb.com/3";
+    static String mainUrl = "https://api.themoviedb.org/3";
     final Dio _dio = Dio();
     var getPopularUrl = "$mainUrl/movie/top_rated";
     var getMovieUrl = "$mainUrl/discover/movie";
@@ -36,7 +36,6 @@ class MovieRepository {
         };
         try {
             Response response = await _dio.get(getPlayingUrl, queryParameters: params);
-            print("response: ${response.data}");
             return MovieResponse.fromJson(response.data);
         }catch(error, stacktrace) {
             print("Exception occured: $error stackTrace: $stacktrace");
