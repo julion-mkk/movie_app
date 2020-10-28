@@ -2,7 +2,7 @@
     package="com.julion.movie_app">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="movie_app"
+        android:label="E I V O M"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

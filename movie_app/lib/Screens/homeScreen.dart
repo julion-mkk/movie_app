@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/style/theme.dart' as style;
 import 'package:movie_app/widgets/genres.dart';
 import 'package:movie_app/widgets/nowPlaying.dart';
+import 'package:movie_app/widgets/persons.dart';
 
 class HomeScreen extends StatefulWidget{
     HomeScreenState createState()=> HomeScreenState();
@@ -15,7 +16,7 @@ class HomeScreenState extends State<HomeScreen> {
             appBar: AppBar(
                 centerTitle: true,
                 backgroundColor: style.Colors.mainColor,
-                title: Text("MovieApp"),
+                title: Text("E I V O M"),
                 leading: Icon(EvaIcons.menu2Outline, color: Colors.white,),
                 actions: [
                     IconButton(icon: Icon(EvaIcons.searchOutline, color: Colors.white,),onPressed: null,)
@@ -24,7 +25,8 @@ class HomeScreenState extends State<HomeScreen> {
             body: ListView(
                 children: <Widget>[
                     NowPlaying(),
-                    GenresScreen()
+                    GenresScreen(),
+                    Persons()
                 ],
             ),
         );

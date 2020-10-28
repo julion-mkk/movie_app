@@ -64,6 +64,7 @@ class _GenreMoviesState extends State<GenreMovies> {
                         return Padding(
                             padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0),
                             child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                     movies[index].poster == null ? Container(
                                             width: 120,
@@ -104,6 +105,7 @@ class _GenreMoviesState extends State<GenreMovies> {
                                         height: 5.0,
                                     ),
                                     Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
                                             Text(movies[index].rating.toString(), style: TextStyle(
                                                 color: Colors.white,
