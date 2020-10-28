@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_app/bloc/getNowPlayingBloc.dart';
 import 'package:movie_app/model/movie.dart';
 import 'package:movie_app/model/movie_response.dart';
+import 'package:movie_app/widgets/loadingWidget.dart';
 import 'package:page_indicator/page_indicator.dart';
 import 'package:movie_app/style/theme.dart' as style;
 
@@ -26,40 +27,13 @@ class NowPlayingState extends State<NowPlaying> {
             builder: (context,AsyncSnapshot<MovieResponse> snapshot) {
                 if(snapshot.hasData) {
                     if(snapshot.data.error != null && snapshot.data.error.length > 0)
-                        return _buildErrorWidget(snapshot.data.error);
+                        return ErrorWidget(snapshot.data.error);
                     return _buildNowPlayingWidget(snapshot.data);
                 } else if(snapshot.hasError) {
-                    return _buildErrorWidget(snapshot.error);
+                    return ErrorWidget(snapshot.error);
                 }
-                return _buildLoadingWidget();
+                return LoadingWidget();
             },
-        );
-    }
-
-    _buildErrorWidget(String error) {
-        return Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                    Text(error)
-                ],
-            ),
-        );
-    }
-
-    _buildLoadingWidget() {
-        return Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                    SizedBox(
-                        height: 25.0,
-                        width: 25.0,
-                        child: CircularProgressIndicator(),
-                    )
-                ],
-            )
         );
     }
 
