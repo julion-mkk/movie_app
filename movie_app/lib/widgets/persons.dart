@@ -44,7 +44,8 @@ class _PersonsState extends State<Persons> {
                         } else if(snapshot.hasError) {
                             return ErrorWidget(snapshot.error);
                         }
-                        return LoadingWidget();
+                        return Container();
+                        //return LoadingWidget();
                     },
                 )
             ],
