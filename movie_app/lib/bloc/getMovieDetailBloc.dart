@@ -3,11 +3,11 @@ import 'package:movie_app/model/movieDetail_response.dart';
 import 'package:movie_app/repository/movieRepository.dart';
 import 'package:rxdart/rxdart.dart';
 
-class getMovieDetailBloc {
+class GetMovieDetailBloc {
     final MovieRepository _repository = MovieRepository();
     final BehaviorSubject<MovieDetailResponse> _subject = BehaviorSubject<MovieDetailResponse>();
 
-    getCasts(int id) async {
+    getMovieDetail(int id) async {
         MovieDetailResponse response = await _repository.getMovieDetail(id);
         _subject.sink.add(response);
     }
@@ -21,6 +21,6 @@ class getMovieDetailBloc {
         _subject.close();
     }
 
-    BehaviorSubject<MovieDetailResponse> get cast => _subject;
+    BehaviorSubject<MovieDetailResponse> get subject => _subject;
 }
-final getCastBloc = getMovieDetailBloc();
+final getMovieDetailBloc = GetMovieDetailBloc();

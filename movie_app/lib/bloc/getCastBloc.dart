@@ -21,6 +21,6 @@ class GetCastBloc {
         _subject.close();
     }
 
-    BehaviorSubject<CastResponse> get cast => _subject;
+    BehaviorSubject<CastResponse> get subject => _subject;
 }
 final getCastBloc = GetCastBloc();

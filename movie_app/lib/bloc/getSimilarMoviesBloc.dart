@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movie_app/model/movieDetail_response.dart';
+import 'package:movie_app/model/movie_response.dart';
 import 'package:movie_app/model/video_response.dart';
 import 'package:movie_app/repository/movieRepository.dart';
 import 'package:rxdart/rxdart.dart';
 
-class GetVideosBloc {
+class GetSimilarMoviesBloc {
     final MovieRepository _repository = MovieRepository();
-    final BehaviorSubject<VideoResponse> _subject = BehaviorSubject<VideoResponse>();
+    final BehaviorSubject<MovieResponse> _subject = BehaviorSubject<MovieResponse>();
 
-    getMoviesVideos(int id) async {
-        VideoResponse response = await _repository.getMovieVideos(id);
+    getCasts(int id) async {
+        MovieResponse response = await _repository.getSimilarMovies(id);
         _subject.sink.add(response);
     }
 
@@ -22,6 +22,6 @@ class GetVideosBloc {
         _subject.close();
     }
 
-    BehaviorSubject<VideoResponse> get subject => _subject;
+    BehaviorSubject<MovieResponse> get subject => _subject;
 }
-final getVideosBloc = GetVideosBloc();
+final getSimilarMoviesBloc = MovieRepository();

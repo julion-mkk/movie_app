@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:movie_app/Screens/detailScreen.dart';
 import 'package:movie_app/bloc/getMovieByGenre.dart';
 import 'package:movie_app/model/movie.dart';
 import 'package:movie_app/model/movie_response.dart';
@@ -63,22 +64,28 @@ class _GenreMoviesState extends State<GenreMovies> {
                     itemBuilder: (context,index) {
                         return Padding(
                             padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0),
-                            child: Column(
+                            child: GestureDetector(
+                                onTap: () {
+                                    Navigator.push(context,MaterialPageRoute(
+                                        builder: (context) => DetailScreen(movie: movies[index])
+                                    ));
+                                },
+                                child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                     movies[index].poster == null ? Container(
-                                            width: 120,
-                                            height: 180,
-                                            decoration: BoxDecoration(
-                                                color: Colors.yellow,
-                                                borderRadius: BorderRadius.all(Radius.circular(2.0)),
-                                                shape: BoxShape.rectangle,
-                                            ),
-                                            child: Column(
-                                                children: <Widget>[
-                                                    Icon(EvaIcons.filmOutline, color: Colors.white, size: 50.0,)
-                                                ],
-                                            ),
+                                        width: 120,
+                                        height: 180,
+                                        decoration: BoxDecoration(
+                                            color: style.Colors.secondColor,
+                                            borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                                            shape: BoxShape.rectangle,
+                                        ),
+                                        child: Column(
+                                            children: <Widget>[
+                                                Icon(EvaIcons.filmOutline, color: Colors.white, size: 50.0,)
+                                            ],
+                                        ),
                                     ) :
                                     Container(
                                         width: 120.0,
@@ -133,6 +140,7 @@ class _GenreMoviesState extends State<GenreMovies> {
                                         ],
                                     )
                                 ],
+                            ),
                             ),
                         );
                     },
