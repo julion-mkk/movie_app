@@ -5,6 +5,7 @@ import 'package:movie_app/model/genre_response.dart';
 import 'package:movie_app/model/movieDetail_response.dart';
 import 'package:movie_app/model/movie_response.dart';
 import 'package:movie_app/model/person_response.dart';
+import 'package:movie_app/model/video_response.dart';
 
 class MovieRepository {
     final String apiKey = "44accb5aeb17aac8c9c8f0d576a76b9d";
@@ -133,6 +134,21 @@ class MovieRepository {
         }catch(error, stacktrace) {
             print("Exception occured: $error stackTrace: $stacktrace");
             return MovieResponse.withError("$error");
+        }
+    }
+
+    Future<VideoResponse> getMovieVideos(int id) async {
+        var params = {
+            "api_key" : apiKey,
+            "language" : "en-US"
+        };
+
+        try {
+            Response response = await _dio.get(getMovieDetailUrl+"/$id"+"/videos", queryParameters: params);
+            return VideoResponse.fromJson(response.data);
+        }catch(error, stacktrace) {
+            print("Exception occured: $error stackTrace: $stacktrace");
+            return VideoResponse.withError("$error");
         }
     }
 }
