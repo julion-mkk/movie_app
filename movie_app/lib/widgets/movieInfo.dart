@@ -119,6 +119,50 @@ class _MovieInfoState extends State<MovieInfo> {
                 ),
                 SizedBox(
                     height: 10.0,
+                ),
+                Padding(
+                    padding: EdgeInsets.only(left: 10.0,top: 10.0),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                            Text("GENRES",style: TextStyle(
+                                color: style.Colors.titleColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.0),
+                            ),
+                            SizedBox(
+                                height: 10.0,
+                            ),
+                            Container(
+                                height: 30.0,
+                                padding: EdgeInsets.only(top: 5),
+                                child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: movieDetail.genres.length,
+                                    itemBuilder: (context, index) {
+                                        return Padding(
+                                            padding: EdgeInsets.only(right: 10),
+                                            child: Container(
+                                                padding: EdgeInsets.all(5.0),
+                                                decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                                                    border: Border.all(
+                                                        color: Colors.white,
+                                                        width: 1.0
+                                                    )
+                                                ),
+                                                child: Text(movieDetail.genres[index].name,style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 9.0,
+                                                    fontWeight: FontWeight.w300,),
+                                                ),
+                                            ),
+                                        );
+                                    },
+                                ),
+                            )
+                        ],
+                    ),
                 )
             ],
         );

@@ -58,7 +58,6 @@ class _GenreListState extends State<GenreList> with SingleTickerProviderStateMix
                                 labelColor: Colors.white,
                                 isScrollable: true,
                                 tabs: genres.map((Genre genre) {
-                                    print("genre : $genre");
                                     return Container(
                                         padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
                                         child: Text(genre.name.toUpperCase(), style: TextStyle(

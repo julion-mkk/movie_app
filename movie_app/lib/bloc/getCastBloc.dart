@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movie_app/model/cast_response.dart';
+import 'package:movie_app/model/genre_response.dart';
 import 'package:movie_app/repository/movieRepository.dart';
 import 'package:rxdart/rxdart.dart';
 
 class GetCastBloc {
-    final MovieRepository _repository = MovieRepository();
+    final MovieRepository _repository= MovieRepository();
     final BehaviorSubject<CastResponse> _subject = BehaviorSubject<CastResponse>();
 
-    getCasts(int id) async {
-        CastResponse castResponse = await _repository.getCasts(id);
-        _subject.sink.add(castResponse);
+    getCasts(id) async {
+        CastResponse response = await _repository.getCasts(id);
+        _subject.sink.add(response);
     }
 
     void drainStream() {
@@ -23,4 +24,5 @@ class GetCastBloc {
 
     BehaviorSubject<CastResponse> get subject => _subject;
 }
+
 final getCastBloc = GetCastBloc();
