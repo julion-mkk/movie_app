@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movie_app/Screens/detailScreen.dart';
 import 'package:movie_app/bloc/getNowPlayingBloc.dart';
 import 'package:movie_app/model/movie.dart';
 import 'package:movie_app/model/movie_response.dart';
@@ -65,59 +66,66 @@ class NowPlayingState extends State<NowPlaying> {
                         scrollDirection: Axis.horizontal,
                         itemCount: movies.take(5).length,
                         itemBuilder: (context,index) {
-                            return Stack(
-                                children: <Widget>[
-                                    Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        height: 220.0,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            image: DecorationImage(image: NetworkImage("https://image.tmdb.org/t/p/original/" + movies[index].backPoster),
-                                            fit: BoxFit.cover)
-                                        ),
-                                    ),
-                                    Container(
-                                        decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                                colors: [
-                                                    style.Colors.mainColor.withOpacity(1.0),
-                                                    style.Colors.mainColor.withOpacity(0.0)
-                                                ],
-                                                begin: Alignment.bottomCenter,
-                                                end: Alignment.topCenter,
-                                                stops: [
-                                                    0.0,
-                                                    0.9
-                                                ]
-                                            )
-                                        ),
-                                    ),
-                                    Positioned(
-                                        left: 0,
-                                        right: 0,
-                                        top: 0,
-                                        bottom: 0,
-                                        child: Icon(FontAwesomeIcons.playCircle,color: style.Colors.secondColor,size: 40.0,),
-                                    ),
-                                    Positioned(
-                                        bottom: 30,
-                                        child: Container(
-                                            padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                                            width: 250,
-                                            child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: <Widget>[
-                                                    Text(movies[index].title,style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight: FontWeight.bold,
-                                                        height: 1.5,
-                                                        fontSize: 16
-                                                    ),)
-                                                ],
+                            return GestureDetector(
+                                onTap: () {
+                                    Navigator.push(context,MaterialPageRoute(
+                                        builder: (context)=> DetailScreen(movie: movies[index])
+                                    ));
+                                },
+                                child: Stack(
+                                    children: <Widget>[
+                                        Container(
+                                            width: MediaQuery.of(context).size.width,
+                                            height: 220.0,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.rectangle,
+                                                image: DecorationImage(image: NetworkImage("https://image.tmdb.org/t/p/original/" + movies[index].backPoster),
+                                                    fit: BoxFit.cover)
                                             ),
                                         ),
-                                    )
-                                ],
+                                        Container(
+                                            decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                    colors: [
+                                                        style.Colors.mainColor.withOpacity(1.0),
+                                                        style.Colors.mainColor.withOpacity(0.0)
+                                                    ],
+                                                    begin: Alignment.bottomCenter,
+                                                    end: Alignment.topCenter,
+                                                    stops: [
+                                                        0.0,
+                                                        0.9
+                                                    ]
+                                                )
+                                            ),
+                                        ),
+                                        Positioned(
+                                            left: 0,
+                                            right: 0,
+                                            top: 0,
+                                            bottom: 0,
+                                            child: Icon(FontAwesomeIcons.playCircle,color: style.Colors.secondColor,size: 40.0,),
+                                        ),
+                                        Positioned(
+                                            bottom: 30,
+                                            child: Container(
+                                                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                                                width: 250,
+                                                child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: <Widget>[
+                                                        Text(movies[index].title,style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight: FontWeight.bold,
+                                                            height: 1.5,
+                                                            fontSize: 16
+                                                        ),)
+                                                    ],
+                                                ),
+                                            ),
+                                        )
+                                    ],
+                                ),
                             );
                         },
                     ),
