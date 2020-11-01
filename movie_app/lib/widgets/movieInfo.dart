@@ -20,7 +20,6 @@ class _MovieInfoState extends State<MovieInfo> {
     @override
     void initState() {
         super.initState();
-        print(movieId);
         getMovieDetailBloc..getMovieDetail(movieId);
     }
 

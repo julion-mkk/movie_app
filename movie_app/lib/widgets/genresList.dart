@@ -22,7 +22,6 @@ class _GenreListState extends State<GenreList> with SingleTickerProviderStateMix
     @override
     void initState() {
         super.initState();
-        print("genresList : $genres");
         _tabController = TabController(vsync: this, length: genres.length);
         _tabController.addListener(() {
             if(_tabController.indexIsChanging) {

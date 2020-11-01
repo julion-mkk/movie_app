@@ -115,7 +115,6 @@ class MovieRepository {
 
         try {
             Response response = await _dio.get(getMovieDetailUrl+"/$id"+"/credits", queryParameters: params);
-            print("RESPO : ${response.data}");
             return CastResponse.fromJson(response.data);
         }catch(error, stacktrace) {
             print("Exception occured: $error stackTrace: $stacktrace");
