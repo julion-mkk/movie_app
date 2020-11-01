@@ -51,7 +51,6 @@ class _CastsState extends State<Casts> {
                             if(snapShot.data.error != null && snapShot.data.error.length > 0) {
                                 return ErrorWidget(snapShot.data.error);
                             }
-                            print("CSASS: ${snapShot.data.casts[8].img}");
                             return _buildCastsWidget(snapShot.data);
                         } else if(snapShot.hasError) {
                             return ErrorWidget(snapShot.error);

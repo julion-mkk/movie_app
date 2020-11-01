@@ -10,8 +10,10 @@ import 'package:movie_app/widgets/casts.dart';
 import 'package:movie_app/widgets/loadingWidget.dart';
 import 'package:movie_app/widgets/movieInfo.dart';
 import 'package:movie_app/widgets/similarMovies.dart';
+import 'package:movie_app/widgets/videoPlayer.dart';
 import 'package:sliver_fab/sliver_fab.dart';
 import 'package:movie_app/model/Video.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailScreen extends StatefulWidget {
     final Movie movie;
@@ -182,7 +184,16 @@ class DetailScreenState extends State<DetailScreen> {
         return FloatingActionButton(
             backgroundColor: style.Colors.secondColor,
             child: Icon(Icons.play_arrow,),
-            onPressed: () {  },
+            onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => VideoPlayer(controller: YoutubePlayerController(
+                        initialVideoId: videos[0].key,
+                        flags: YoutubePlayerFlags(
+                            autoPlay: true
+                        )
+                    ))
+                ));
+            },
         );
     }
 }
