@@ -9,6 +9,7 @@ import 'package:movie_app/style/theme.dart' as style;
 import 'package:movie_app/widgets/casts.dart';
 import 'package:movie_app/widgets/loadingWidget.dart';
 import 'package:movie_app/widgets/movieInfo.dart';
+import 'package:movie_app/widgets/similarMovies.dart';
 import 'package:sliver_fab/sliver_fab.dart';
 import 'package:movie_app/model/Video.dart';
 
@@ -160,7 +161,11 @@ class DetailScreenState extends State<DetailScreen> {
                                             SizedBox(
                                                 height: 10.0,
                                             ),
-                                            Casts(movieId: movie.id)
+                                            Casts(movieId: movie.id),
+                                            SizedBox(
+                                                height: 10.0,
+                                            ),
+                                            SimilarMovies(movieId: movie.id)
                                         ]
                                     ),
                                 ),
