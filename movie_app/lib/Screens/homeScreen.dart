@@ -18,10 +18,10 @@ class HomeScreenState extends State<HomeScreen> {
                 centerTitle: true,
                 backgroundColor: style.Colors.mainColor,
                 title: Text("E I V O M"),
-                leading: Icon(EvaIcons.menu2Outline, color: Colors.white,),
+                /*leading: Icon(EvaIcons.menu2Outline, color: Colors.white,),
                 actions: [
                     IconButton(icon: Icon(EvaIcons.searchOutline, color: Colors.white,),onPressed: null,)
-                ],
+        ` `       ],*/
             ),
             body: ListView(
                 children: <Widget>[
