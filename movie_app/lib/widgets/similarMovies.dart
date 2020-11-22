@@ -67,7 +67,9 @@ class _SimilarMoviesState extends State<SimilarMovies> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                        Text("No movies")
+                        Text("No movies",style: TextStyle(
+                            color: style.Colors.titleColor
+                        ),)
                     ],
                 ),
             );

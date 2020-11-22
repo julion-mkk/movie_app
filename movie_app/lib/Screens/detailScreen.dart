@@ -46,6 +46,7 @@ class DetailScreenState extends State<DetailScreen> {
                         floatingWidget: StreamBuilder<VideoResponse>(
                             stream:getVideosBloc.subject.stream,
                             builder: (context,AsyncSnapshot<VideoResponse> snapshot) {
+                                print(snapshot.data);
                                 if(snapshot.hasData) {
                                     if(snapshot.data.error != null && snapshot.data.error.length > 0) {
                                         return ErrorWidget(snapshot.data.error);
